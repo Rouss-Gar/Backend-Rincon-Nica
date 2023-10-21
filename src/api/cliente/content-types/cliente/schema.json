@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clientes",
+  "info": {
+    "singularName": "cliente",
+    "pluralName": "clientes",
+    "displayName": "Cliente"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uid": {
+      "type": "uid"
+    },
+    "Nombre": {
+      "type": "string"
+    },
+    "Direccion": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "integer"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}
