@@ -25,6 +25,12 @@
     },
     "Precio_Venta": {
       "type": "decimal"
+    },
+    "clientes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cliente.cliente",
+      "mappedBy": "productos"
     }
   }
 }

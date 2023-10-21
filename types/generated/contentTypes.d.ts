@@ -715,6 +715,7 @@ export interface ApiClienteCliente extends Schema.CollectionType {
     singularName: 'cliente';
     pluralName: 'clientes';
     displayName: 'Cliente';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -725,6 +726,16 @@ export interface ApiClienteCliente extends Schema.CollectionType {
     Direccion: Attribute.String;
     telefono: Attribute.Integer;
     email: Attribute.Email;
+    productos: Attribute.Relation<
+      'api::cliente.cliente',
+      'manyToMany',
+      'api::producto.producto'
+    >;
+    pedidos: Attribute.Relation<
+      'api::cliente.cliente',
+      'manyToMany',
+      'api::pedido.pedido'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -756,6 +767,11 @@ export interface ApiDetallePedidoDetallePedido extends Schema.CollectionType {
   attributes: {
     id_detallepedido: Attribute.UID;
     Descripcion: Attribute.Text;
+    pedidos: Attribute.Relation<
+      'api::detalle-pedido.detalle-pedido',
+      'manyToMany',
+      'api::pedido.pedido'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -814,6 +830,7 @@ export interface ApiPedidoPedido extends Schema.CollectionType {
     singularName: 'pedido';
     pluralName: 'pedidos';
     displayName: 'pedido';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -823,6 +840,16 @@ export interface ApiPedidoPedido extends Schema.CollectionType {
     Fecha_Pedido: Attribute.DateTime;
     Direccion: Attribute.String;
     Total: Attribute.Decimal;
+    clientes: Attribute.Relation<
+      'api::pedido.pedido',
+      'manyToMany',
+      'api::cliente.cliente'
+    >;
+    detalle_pedidos: Attribute.Relation<
+      'api::pedido.pedido',
+      'manyToMany',
+      'api::detalle-pedido.detalle-pedido'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -857,6 +884,11 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     Descripcion: Attribute.Text;
     Precio_Compra: Attribute.Decimal;
     Precio_Venta: Attribute.Decimal;
+    clientes: Attribute.Relation<
+      'api::producto.producto',
+      'manyToMany',
+      'api::cliente.cliente'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

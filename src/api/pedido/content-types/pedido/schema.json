@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pedido",
     "pluralName": "pedidos",
-    "displayName": "pedido"
+    "displayName": "pedido",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,18 @@
     },
     "Total": {
       "type": "decimal"
+    },
+    "clientes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cliente.cliente",
+      "mappedBy": "pedidos"
+    },
+    "detalle_pedidos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::detalle-pedido.detalle-pedido",
+      "inversedBy": "pedidos"
     }
   }
 }
